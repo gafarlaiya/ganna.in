@@ -1,0 +1,26 @@
+# ganna.in: Sugarcane knowledge hub (Gujarati)
+
+> ganna.in is a Gujarati-language knowledge hub for sugarcane farmers in Gujarat, run by Gujarat Bio Organics Pvt. Ltd. (Bhavnagar, Gujarat). It documents the Immunity Sugarcane Program (Immunity Granules, Immunity Sugarcane Special, Immunity Gold), dosage schedules, farmer-reported experiences and general sugarcane agronomy guides.
+
+## Key facts (current program guidance)
+- Plantation: Immunity Granules 8-12 KG per vigha (20-30 KG per acre). 1 acre = 2.5 vigha in this program's calculations.
+- Early drenching: Immunity Sugarcane Special 0.5-0.7 litres (500-700 ML) per vigha, after the first irrigation / 3-4 days after herbicide.
+- 2-4 leaves foliar spray: 250 ML Sugarcane Special + 250 ML Immunity Gold per vigha (4-5 pumps; 45-50 ML of each per 15 L pump).
+- Repeat sprays every 15-25 days (2-3 sprays), depending on crop condition. Granules continue with each major fertilizer dose (1 bag).
+- Products can be used with chemical fertilizers, fungicides and pesticides in the program; confirm specific tank mixes by phone.
+- Availability: most cooperative societies (mandalis) in Surat and Navsari districts, as stated by the company.
+- Farmer results on the site are individual experiences reported by farmers, not guarantees.
+
+## Pages
+- Program: https://ganna.in/sugarcane-program/
+- Dosage schedule and calculator: https://ganna.in/sugarcane-dosage-schedule/
+- Products: https://ganna.in/products/
+- Farmer experiences and gallery: https://ganna.in/farmer-results/
+- Knowledge hub (guides): https://ganna.in/knowledge/
+- FAQ: https://ganna.in/faq/
+- Surat: https://ganna.in/sugarcane-farmers-surat/
+- Navsari: https://ganna.in/sugarcane-farmers-navsari/
+- About: https://ganna.in/about/
+
+## Contact
+Phone / WhatsApp: +91 99787 91167
