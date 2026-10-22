@@ -300,6 +300,26 @@ details p{padding:0 20px 18px;color:var(--muted);font-size:15.5px}
 .footer .copy{text-align:center;margin-top:22px}
 @media(max-width:980px){.tiles{grid-template-columns:1fr 1fr}.bt{grid-template-columns:1fr}.footer .fcols{grid-template-columns:1fr}}
 @media(max-width:560px){.tiles{grid-template-columns:1fr}}
+
+/* ---- Enquiry form (saves to the GBO dashboard, then opens WhatsApp) ---- */
+.lead{background:linear-gradient(180deg,#0f2f19,#0a2212);color:#fff;padding:48px 0}
+.lead-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;align-items:center}
+.lead h2{color:#fff;margin:0 0 12px}
+.lead .why{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+.lead .why li{display:flex;gap:10px;align-items:flex-start;color:#d9ecd9;font-size:16px}
+.lead .why li b{color:var(--gold)}
+.lform{background:#fff;color:var(--dark);border-radius:18px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.lform label{display:block;font-weight:800;font-size:15px;margin:12px 0 6px}
+.lform input,.lform select{width:100%;font:inherit;font-size:17px;padding:13px 14px;border:2px solid #d6e6d3;border-radius:12px;background:#fbfdfb;color:var(--dark)}
+.lform input:focus,.lform select:focus{outline:none;border-color:var(--green2);box-shadow:0 0 0 3px rgba(36,114,47,.15)}
+.lform .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.lform button{width:100%;margin-top:18px;font-size:18px;background:#147a3f;color:#fff}
+.lform .fine{font-size:13px;color:#5b6b5d;margin:10px 0 0;text-align:center}
+.lform .err{color:#b42318;font-weight:700;font-size:14px;margin:8px 0 0;display:none}
+.lform .ok{display:none;text-align:center;padding:18px 6px}
+.lform .ok strong{display:block;font-size:22px;color:var(--green2);margin-bottom:8px}
+.hero-form-link{display:inline-block;margin-top:14px;color:var(--gold);font-weight:800;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:860px){.lead-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@context": "https://schema.org", "@type": "Organization", "@id": "https://ganna.in/#org", "name": "Gujarat Bio Organics Pvt. Ltd.", "url": "https://ganna.in/", "sameAs": ["https://www.gujaratbio.com/", "https://b2b.gujaratbio.com/", "https://www.facebook.com/gujaratbio", "https://www.youtube.com/@Gujaratbio"], "telephone": "+919978791167", "brand": {"@type": "Brand", "name": "Immunity"}, "areaServed": ["Surat", "Navsari", "South Gujarat", "Gujarat"]}, {"@type": "WebSite", "name": "ganna.in શેરડી જ્ઞાન કેન્દ્ર", "url": "https://ganna.in/", "inLanguage": "gu", "publisher": {"@id": "https://ganna.in/#org"}}]}</script>
 </head>
@@ -344,6 +364,7 @@ details p{padding:0 20px 18px;color:var(--muted);font-size:15.5px}
             <a class="chip" data-stage="2–4 leaves stageમાં આવી ગઈ છે" href="https://wa.me/919978791167" target="_blank" rel="noopener">2–4 Leaves થઈ ગયા</a>
           </div>
           <p class="note">એક ટચ પર WhatsApp ખુલશે, stage પહેલેથી લખેલો હશે.</p>
+          <a class="hero-form-link" href="#form">અથવા 30 સેકન્ડનું ફોર્મ ભરો, અમે સામેથી WhatsApp કરીશું ↓</a>
         </div>
 
         <div class="row">
@@ -375,6 +396,58 @@ details p{padding:0 20px 18px;color:var(--muted);font-size:15.5px}
 </section>
 
 <div class="strip">🌱 Plantationથી Harvest સુધી — શેરડીની દરેક મહત્વની Stage માટે યોગ્ય Program સમજવો મહત્વપૂર્ણ છે.</div>
+
+<!-- ENQUIRY FORM: saved to the GBO dashboard, auto WhatsApp reply, then opens WhatsApp -->
+<section class="lead" id="form">
+  <div class="container">
+    <div class="lead-grid">
+      <div>
+        <span class="kicker gold">📋 30 સેકન્ડનું ફોર્મ</span>
+        <h2>તમારી શેરડી માટે <span class="hl">Program અને ડોઝ</span> WhatsApp પર મેળવો</h2>
+        <p style="color:#d9ecd9;font-size:17px;margin:0">તમારી વિગત મોકલો, અમારા પાક સલાહકાર તમારી stage અને વિસ્તાર પ્રમાણે સલાહ આપશે.</p>
+        <ul class="why">
+          <li><b>✓</b><span>તમારા વીઘા / એકર પ્રમાણે કેટલું Granules, Special અને Gold જોઈએ તે</span></li>
+          <li><b>✓</b><span>તમારી હાલની stage માટે શું આપવું અને ક્યારે</span></li>
+          <li><b>✓</b><span>તમારી નજીક products ક્યાં મળશે</span></li>
+        </ul>
+      </div>
+      <form class="lform" id="ganna-lead" novalidate>
+        <div class="fields">
+          <label for="lf-name">તમારું નામ</label>
+          <input id="lf-name" name="name" autocomplete="name" placeholder="દા.ત. રમેશભાઈ પટેલ" required>
+          <label for="lf-phone">મોબાઇલ નંબર (WhatsApp)</label>
+          <input id="lf-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10 અંકનો નંબર" maxlength="14" required>
+          <label for="lf-village">ગામ / તાલુકો</label>
+          <input id="lf-village" name="village" placeholder="દા.ત. બારડોલી">
+          <label>શેરડીનો વિસ્તાર</label>
+          <div class="two">
+            <input id="lf-area" name="area" type="number" inputmode="decimal" min="0" step="0.5" placeholder="દા.ત. 5" aria-label="વિસ્તાર">
+            <select id="lf-unit" name="unit" aria-label="એકમ"><option value="વીઘા">વીઘા</option><option value="એકર">એકર</option></select>
+          </div>
+          <label for="lf-stage">શેરડી અત્યારે કયા stageમાં છે?</label>
+          <select id="lf-stage" name="stage">
+            <option value="">પસંદ કરો</option>
+            <option>Plantation હજુ કરવાની બાકી છે</option>
+            <option>Plantation થઈ ગયું છે</option>
+            <option>First irrigation આવવાની છે</option>
+            <option>Herbicide / ઘાસ મારવાની દવા આપી છે</option>
+            <option>2–4 leaves stageમાં આવી ગઈ છે</option>
+            <option>મોટી શેરડી / ખૂંટા (Ratoon) પાક</option>
+          </select>
+          <p class="err" id="lf-err">કૃપા કરીને નામ અને સાચો 10 અંકનો મોબાઇલ નંબર લખો.</p>
+          <button class="btn" type="submit" id="lf-btn">📲 મારો Program WhatsApp પર મેળવો</button>
+          <p class="fine">તમારો નંબર ફક્ત Gujarat Bio Organics ની સલાહ માટે વપરાશે.</p>
+        </div>
+        <div class="ok" id="lf-ok">
+          <strong>આભાર! ✅</strong>
+          <p>તમારી વિગત અમને મળી ગઈ છે. અમારા પાક સલાહકાર થોડી વારમાં WhatsApp પર સંપર્ક કરશે.</p>
+          <a class="btn b-wa" id="lf-wa" href="https://wa.me/919978791167" target="_blank" rel="noopener">WhatsApp ખોલો</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
 
 <!-- VISHAL TESTIMONIAL -->
 <section class="section light" id="proof">
@@ -594,6 +667,18 @@ details p{padding:0 20px 18px;color:var(--muted);font-size:15.5px}
         <div class="vid" data-v="v4" data-title="Sugarcane Field Comparison"></div>
         <div class="vcap"><h3>Field comparison — ખેડૂતનો અનુભવ</h3><p>DAP વગરના પ્લોટ અંગે ખેડૂતે જોયેલો crop development.</p></div>
       </div>
+      <div class="vcard">
+        <div class="vid" data-v="v5" data-title="13013 શેરડી: સવા વીઘામાંથી 50 ટન બિયારણ"></div>
+        <div class="vcap"><h3>“સવા વીઘામાંથી 50 ટન બિયારણ કાપ્યું”</h3><p>13013 જાતની શેરડી અંગે ખેડૂતે જણાવેલો પોતાનો અનુભવ.</p></div>
+      </div>
+      <div class="vcard">
+        <div class="vid" data-v="v6" data-title="गन्ने की खेती में इम्यूनिटी शुगरकेन स्पेशल का महत्व"></div>
+        <div class="vcap"><h3>Immunity Sugarcane Special નું મહત્વ</h3><p>શેરડીની ખેતીમાં Sugarcane Special ક્યારે અને કેમ — હિન્દીમાં સમજ.</p></div>
+      </div>
+      <div class="vcard">
+        <div class="vid" data-v="v7" data-title="रासायनिक या गुजरात बायो ऑर्गेनिक्स — गन्ने की तुलना"></div>
+        <div class="vcap"><h3>Chemical કે Gujarat Bio Organics? ખેતરમાં સરખામણી</h3><p>બંને રીતે ઉગાડેલી શેરડીની ખેડૂતે બતાવેલી સરખામણી (હિન્દીમાં).</p></div>
+      </div>
     </div>
     <p class="note center" style="color:#a8c4ab">*બધા videos ખેડૂતોના વ્યક્તિગત અનુભવો છે, guaranteed result નથી.</p>
   </div>
@@ -699,7 +784,10 @@ var VIDEOS = {
   v1: { yt: '8Kqtrdanllk', mp4: '', poster: '' },
   v2: { yt: '0o1jKwmbC4s', mp4: '', poster: '' },
   v3: { yt: '85mQMFCTEQ4', mp4: '', poster: '' },
-  v4: { yt: '3pKQAbrBjKw', mp4: '', poster: '' }
+  v4: { yt: '3pKQAbrBjKw', mp4: '', poster: '' },
+  v5: { yt: 'itl735gzT2Y', mp4: '', poster: '' },
+  v6: { yt: 'FI413yXiuzw', mp4: '', poster: '' },
+  v7: { yt: 'Nw8yz27dJPM', mp4: '', poster: '' }
 };
 var PLAY_SVG = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
 
@@ -772,6 +860,54 @@ document.addEventListener('click', function(e){
   var w = e.target.closest('a[href*="wa.me"]');
   if (w) { window.dataLayer.push({event:'generate_lead', method:'whatsapp', click_source:clickSource(w), link_url:w.href}); }
 });
+
+/* ---- Enquiry form: save to the GBO dashboard (auto WhatsApp reply + Meta/Google signals), then open WhatsApp ---- */
+(function(){
+  var F = document.getElementById('ganna-lead'); if (!F) return;
+  var SB = 'https://filbmvtclfcrrvxckema.supabase.co', SK = 'sb_publishable_qbndsVEhemxGLYZa6P3PyQ_iDNmsmmT';
+  function ls(k,v){ try{ if(v===undefined) return localStorage.getItem(k)||''; localStorage.setItem(k,v); }catch(e){ return ''; } }
+  function ck(n){ var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)'); return m?decodeURIComponent(m[1]):''; }
+  var q = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(function(k){ if(q.get(k)&&!ls('gbo_'+k)) ls('gbo_'+k,q.get(k)); });
+  if (q.get('fbclid')) ls('gbo_fbc','fb.1.'+Date.now()+'.'+q.get('fbclid'));
+  if (!ls('gbo_ref') && document.referrer && document.referrer.indexOf(location.host)<0) ls('gbo_ref',document.referrer);
+  if (!ls('gbo_landing')) ls('gbo_landing',location.href);
+  // stage chips also pre-select the form's stage
+  document.querySelectorAll('[data-stage]').forEach(function(a){ a.addEventListener('click',function(){ var s=document.getElementById('lf-stage'); if(s) s.value=a.getAttribute('data-stage'); }); });
+  var started=false;
+  F.addEventListener('input',function(){ if(started) return; started=true; window.dataLayer.push({event:'form_start',form_name:'ganna_sugarcane'}); });
+  F.addEventListener('submit', function(e){
+    e.preventDefault();
+    var E=F.elements, name=E['name'].value.trim(), digits=E['phone'].value.replace(/\D/g,'');
+    if (digits.length===12 && digits.indexOf('91')===0) digits=digits.slice(2);
+    if (digits.length===11 && digits.charAt(0)==='0') digits=digits.slice(1);
+    var err=document.getElementById('lf-err');
+    if (!name || !/^[6-9]\d{9}$/.test(digits)) { err.style.display='block'; return; }
+    err.style.display='none';
+    var btn=document.getElementById('lf-btn'); btn.disabled=true; btn.textContent='મોકલી રહ્યા છીએ...';
+    var village=E['village'].value.trim(), area=E['area'].value.trim(), unit=E['unit'].value, stage=E['stage'].value;
+    var eid='gbo-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+    var ga=ck('_ga').split('.');
+    var row={ name:name, phone:'+91'+digits, country:(village?village+', ':'')+'Gujarat, India',
+      interest:'Immunity Sugarcane Program', grades:stage||null, qty:area?(area+' '+unit):null,
+      form:'Farmer site: Sugarcane (ganna.in)', channel:'whatsapp', site:location.host, page:location.href, event_id:eid,
+      message:['ગામ: '+(village||'-'),'વિસ્તાર: '+(area?area+' '+unit:'-'),'Stage: '+(stage||'-')].join(' | '),
+      utm_source:ls('gbo_utm_source'), utm_medium:ls('gbo_utm_medium'), utm_campaign:ls('gbo_utm_campaign'),
+      utm_content:ls('gbo_utm_content'), utm_term:ls('gbo_utm_term'), gclid:ls('gbo_gclid'), fbclid:ls('gbo_fbclid'),
+      referrer:ls('gbo_ref'), landing:ls('gbo_landing'), fbp:ck('_fbp'), fbc:ck('_fbc')||ls('gbo_fbc'),
+      ga_client_id: ga.length>=4 ? ga[2]+'.'+ga[3] : '' };
+    try{ row.timezone=Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(x){}
+    // Browser Lead with the same event ID the server sends, so Meta counts it once
+    try{ if (window.fbq) fbq('track','Lead',{content_name:'ganna_sugarcane_form'},{eventID:eid}); }catch(x){}
+    window.dataLayer.push({event:'form_lead', form_name:'ganna_sugarcane', event_id:eid, land_size:area, land_unit:unit, crop_stage:stage});
+    var msg='નમસ્તે, મારું નામ '+name+'. ગામ: '+(village||'-')+'. શેરડી: '+(area?area+' '+unit:'-')+'. Stage: '+(stage||'-')+'. મારે Immunity Sugarcane Program જાણવો છે.';
+    var wa=waUrl(msg); document.getElementById('lf-wa').href=wa;
+    var finish=function(){ F.querySelector('.fields').style.display='none'; document.getElementById('lf-ok').style.display='block'; setTimeout(function(){ location.href=wa; },1500); };
+    var post=function(x){ return fetch(SB+'/rest/v1/leads',{method:'POST',keepalive:true,headers:{apikey:SK,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify(x)}); };
+    post(row).then(function(r){ if(r && !r.ok && r.status<500) return post({name:row.name,phone:row.phone,country:row.country,interest:row.interest,form:row.form,channel:row.channel,site:row.site,page:row.page,message:row.message,event_id:eid}); })
+      .catch(function(){}).then(finish);
+  });
+})();
 </script>
 </body>
 </html>
