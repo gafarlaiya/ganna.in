@@ -19,7 +19,6 @@
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '2140617293516094');
-  fbq('track', 'PageView');
 </script>
 
 <!-- End Meta Pixel Code -->
@@ -31,6 +30,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P5LCX9GV');</script>
 <!-- End Google Tag Manager -->
+<!-- GA4: main Gujarat Bio Organics property (same as www and b2b), so ganna.in leads, sources and sales report together -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HF0J0NF8G0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-HF0J0NF8G0',{site_section:'ganna_in'});</script>
+
 
 <title>શેરડી માટે Immunity Sugarcane Program | Germination, Tillering, ડોઝ શેડ્યૂલ અને જ્ઞાન કેન્દ્ર | ganna.in</title>
 <meta name="description" content="ગુજરાતના શેરડી ખેડૂતો માટે Immunity Granules, Sugarcane Special અને Gold નો Plantation થી Repeat Spray સુધીનો program, ડોઝ શેડ્યૂલ, ખેડૂતોના અનુભવ અને ગુજરાતીમાં જ્ઞાન કેન્દ્ર.">
@@ -898,9 +901,9 @@ function clickSource(link){
 }
 document.addEventListener('click', function(e){
   var t = e.target.closest('a[href^="tel:"]');
-  if (t) { window.dataLayer.push({event:'generate_lead', method:'call', click_source:clickSource(t), link_url:t.href}); return; }
+  if (t) { window.dataLayer.push({event:'generate_lead', method:'call', click_source:clickSource(t), link_url:t.href}); if (window.gtag) gtag('event','click_phone',{link_location:clickSource(t)}); return; }
   var w = e.target.closest('a[href*="wa.me"]');
-  if (w) { window.dataLayer.push({event:'generate_lead', method:'whatsapp', click_source:clickSource(w), link_url:w.href}); }
+  if (w) { window.dataLayer.push({event:'generate_lead', method:'whatsapp', click_source:clickSource(w), link_url:w.href}); if (window.gtag) gtag('event','click_whatsapp',{link_location:clickSource(w)}); }
 });
 
 /* ---- Enquiry form: save to the GBO dashboard (auto WhatsApp reply + Meta/Google signals), then open WhatsApp ---- */
@@ -917,7 +920,7 @@ document.addEventListener('click', function(e){
   // stage chips also pre-select the form's stage
   document.querySelectorAll('[data-stage]').forEach(function(a){ a.addEventListener('click',function(){ var s=document.getElementById('lf-stage'); if(s) s.value=a.getAttribute('data-stage'); }); });
   var started=false;
-  F.addEventListener('input',function(){ if(started) return; started=true; window.dataLayer.push({event:'form_start',form_name:'ganna_sugarcane'}); });
+  F.addEventListener('input',function(){ if(started) return; started=true; window.dataLayer.push({event:'form_start',form_name:'ganna_sugarcane'}); if (window.gtag) gtag('event','form_start',{form_name:'ganna_sugarcane'}); });
   F.addEventListener('submit', function(e){
     e.preventDefault();
     var E=F.elements, name=E['name'].value.trim(), digits=E['phone'].value.replace(/\D/g,'');
@@ -942,6 +945,7 @@ document.addEventListener('click', function(e){
     // Browser Lead with the same event ID the server sends, so Meta counts it once
     try{ if (window.fbq) fbq('track','Lead',{content_name:'ganna_sugarcane_form'},{eventID:eid}); }catch(x){}
     window.dataLayer.push({event:'form_lead', form_name:'ganna_sugarcane', event_id:eid, land_size:area, land_unit:unit, crop_stage:stage});
+    if (window.gtag) gtag('event','generate_lead',{form_name:'ganna_sugarcane', lead_channel:'website_form', event_id:eid, crop_stage:stage});
     var msg='નમસ્તે, મારું નામ '+name+'. ગામ: '+(village||'-')+'. શેરડી: '+(area?area+' '+unit:'-')+'. Stage: '+(stage||'-')+'. મારે Immunity Sugarcane Program જાણવો છે.';
     var wa=waUrl(msg); document.getElementById('lf-wa').href=wa;
     var finish=function(){ F.querySelector('.fields').style.display='none'; document.getElementById('lf-ok').style.display='block'; setTimeout(function(){ location.href=wa; },1500); };
