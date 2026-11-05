@@ -49,7 +49,10 @@ def switcher(cur, path, avail):
         href = path if code == 'gu' else f'/{code}{path}'
         nm = LANGS[code][0]
         links.append(f'<a href="{href}" lang="{code}"' + (' aria-current="true"' if code == cur else '') + f'>{nm}</a>')
-    return '<!--langbar--><div class="langbar" aria-label="Language">' + ''.join(links) + '</div><!--/langbar-->'
+    css = ('<style>.langbar{display:flex;gap:4px;justify-content:flex-end;overflow-x:auto;white-space:nowrap;background:#0a2212;padding:4px 12px;scrollbar-width:none}'
+           '.langbar::-webkit-scrollbar{display:none}.langbar a{color:#d8e8d8;text-decoration:none;font-size:13px;font-weight:600;padding:2px 9px;border-radius:999px;line-height:1.6}'
+           '.langbar a[aria-current]{background:#f3b72c;color:#0a2212}@media(max-width:600px){.langbar{justify-content:flex-start}}</style>')
+    return '<!--langbar-->' + css + '<div class="langbar" aria-label="Language">' + ''.join(links) + '</div><!--/langbar-->'
 
 
 def alternates(path, avail):
@@ -106,7 +109,34 @@ def translate(h, lang, d, internal, missing):
     return h
 
 
+# Gujarati text inside the home page's inline scripts (WhatsApp messages the farmer sends, button labels)
+JS = {
+    "'નમસ્તે, મારી શેરડી: '": {'hi': "'नमस्ते, मेरा गन्ना: '", 'mr': "'नमस्कार, माझा ऊस: '", 'pa': "'ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ, ਮੇਰਾ ਗੰਨਾ: '", 'kn': "'ನಮಸ್ಕಾರ, ನನ್ನ ಕಬ್ಬು: '", 'en': "'Hello, my sugarcane: '"},
+    "'. મારે Immunity Program જાણવો છે.'": {'hi': "'. मुझे Immunity Program जानना है।'", 'mr': "'. मला Immunity Program जाणून घ्यायचा आहे.'", 'pa': "'. ਮੈਂ Immunity Program ਜਾਣਨਾ ਚਾਹੁੰਦਾ ਹਾਂ।'", 'kn': "'. ನನಗೆ Immunity Program ಬಗ್ಗೆ ತಿಳಿಯಬೇಕು.'", 'en': "'. I want to know about the Immunity Program.'"},
+    'aria-label="Video ચલાવો"': {'hi': 'aria-label="वीडियो चलाएं"', 'mr': 'aria-label="व्हिडिओ चालू करा"', 'pa': 'aria-label="ਵੀਡੀਓ ਚਲਾਓ"', 'kn': 'aria-label="ವೀಡಿಯೊ ಪ್ಲೇ ಮಾಡಿ"', 'en': 'aria-label="Play video"'},
+    "' પંપ'": {'hi': "' पंप'", 'mr': "' पंप'", 'pa': "' ਪੰਪ'", 'kn': "' ಪಂಪ್'", 'en': "' pumps'"},
+    "'નમસ્તે, મારી પાસે '": {'hi': "'नमस्ते, मेरे पास '", 'mr': "'नमस्कार, माझ्याकडे '", 'pa': "'ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ, ਮੇਰੇ ਕੋਲ '", 'kn': "'ನಮಸ್ಕಾರ, ನನ್ನ ಬಳಿ '", 'en': "'Hello, I have '"},
+    "' જમીન છે. ગણતરી મુજબ: Granules: '": {'hi': "' ज़मीन है। गणना के अनुसार: Granules: '", 'mr': "' जमीन आहे. गणनेनुसार: Granules: '", 'pa': "' ਜ਼ਮੀਨ ਹੈ। ਹਿਸਾਬ ਮੁਤਾਬਕ: Granules: '", 'kn': "' ಜಮೀನು ಇದೆ. ಲೆಕ್ಕದ ಪ್ರಕಾರ: Granules: '", 'en': "' of land. As per the calculator: Granules: '"},
+    "'). આ પ્રોગ્રામ સમજાવો.'": {'hi': "'). यह प्रोग्राम समझाइए।'", 'mr': "'). हा प्रोग्राम समजावून सांगा.'", 'pa': "'). ਇਹ ਪ੍ਰੋਗਰਾਮ ਸਮਝਾਓ ਜੀ।'", 'kn': "'). ಈ ಪ್ರೋಗ್ರಾಂ ಬಗ್ಗೆ ತಿಳಿಸಿ.'", 'en': "'). Please explain this program.'"},
+    "'મોકલી રહ્યા છીએ...'": {'hi': "'भेज रहे हैं...'", 'mr': "'पाठवत आहोत...'", 'pa': "'ਭੇਜ ਰਹੇ ਹਾਂ...'", 'kn': "'ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...'", 'en': "'Sending...'"},
+    "'નમસ્તે, મારું નામ '": {'hi': "'नमस्ते, मेरा नाम '", 'mr': "'नमस्कार, माझे नाव '", 'pa': "'ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ, ਮੇਰਾ ਨਾਮ '", 'kn': "'ನಮಸ್ಕಾರ, ನನ್ನ ಹೆಸರು '", 'en': "'Hello, my name is '"},
+    "'. ગામ: '": {'hi': "'. गाँव: '", 'mr': "'. गाव: '", 'pa': "'. ਪਿੰਡ: '", 'kn': "'. ಗ್ರಾಮ: '", 'en': "'. Village: '"},
+    "'. શેરડી: '": {'hi': "'. गन्ना: '", 'mr': "'. ऊस: '", 'pa': "'. ਗੰਨਾ: '", 'kn': "'. ಕಬ್ಬು: '", 'en': "'. Sugarcane: '"},
+    "'. મારે Immunity Sugarcane Program જાણવો છે.'": {'hi': "'. मुझे Immunity Sugarcane Program जानना है।'", 'mr': "'. मला Immunity Sugarcane Program जाणून घ्यायचा आहे.'", 'pa': "'. ਮੈਂ Immunity Sugarcane Program ਜਾਣਨਾ ਚਾਹੁੰਦਾ ਹਾਂ।'", 'kn': "'. ನನಗೆ Immunity Sugarcane Program ಬಗ್ಗೆ ತಿಳಿಯಬೇಕು.'", 'en': "'. I want to know about the Immunity Sugarcane Program.'"},
+}
+
+
+def localise_js(h, lang):
+    def fix(m):
+        s = m.group(0)
+        for k, v in JS.items():
+            s = s.replace(k, v[lang])
+        return s
+    return re.sub(r'<script>.*?</script>', fix, h, flags=re.S)
+
+
 def localise(h, lang, path, internal):
+    h = localise_js(h, lang)
     nm, loc, font = LANGS[lang]
     h = h.replace('<html lang="gu">', f'<html lang="{lang}">', 1)
     h = h.replace('content="gu_IN"', f'content="{loc}"')

@@ -24,3 +24,12 @@
 
 ## Contact
 Phone / WhatsApp: +91 99787 91167
+
+## Languages
+The site is written in Gujarati (https://ganna.in/) and is also available in:
+- Hindi: https://ganna.in/hi/
+- Marathi: https://ganna.in/mr/
+- Punjabi: https://ganna.in/pa/
+- Kannada: https://ganna.in/kn/
+- English: https://ganna.in/en/
+Every page has the same path under each language prefix (for example https://ganna.in/en/faq/).
