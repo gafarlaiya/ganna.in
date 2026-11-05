@@ -54,43 +54,70 @@ if(document.readyState==='complete')setTimeout(cl,1);else addEventListener('load
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
       "@id": "https://ganna.in/#org",
       "name": "Gujarat Bio Organics Pvt. Ltd.",
-      "address": {"@type": "PostalAddress", "streetAddress": "110 Shoppers Plaza, Parimal Chowk, Waghawadi Road", "addressLocality": "Bhavnagar", "addressRegion": "Gujarat", "postalCode": "364001", "addressCountry": "IN"},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "110 Shoppers Plaza, Parimal Chowk, Waghawadi Road",
+        "addressLocality": "Bhavnagar",
+        "addressRegion": "Gujarat",
+        "postalCode": "364001",
+        "addressCountry": "IN"
+      },
       "url": "https://ganna.in/",
       "telephone": "+919978791167",
       "description": "શેરડી અને અન્ય પાકો માટે Immunity બ્રાન્ડના agricultural inputs.",
-      "areaServed": ["Surat", "Navsari", "South Gujarat", "Gujarat"]
-    },
-    {
-      "@type": "Product",
-      "name": "Immunity Sugarcane Special",
-      "brand": {"@type": "Brand", "name": "Immunity"},
-      "image": "https://assets.zyrosite.com/cdn-cgi/image/format%3Dauto%2Cw%3D1024%2Ch%3D2356%2Cfit%3Dcrop/m5Kwy5KQ0qIZE7Mz/immunity-sugarcane-bottle-mnl9gyjLyGt89wLa.png",
-      "description": "શેરડીના crop માટે drenching અને foliar spray programમાં ઉપયોગ."
+      "areaServed": [
+        "Surat",
+        "Navsari",
+        "South Gujarat",
+        "Gujarat"
+      ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "Plantation વખતે Granules કેટલા આપવાના?",
-         "acceptedAnswer": {"@type": "Answer", "text": "Current program પ્રમાણે 1 વીઘા દીઠ 8–12 KG (અથવા 1 એકર દીઠ 20–30 KG) Plantation વખતે આપવાના છે."}},
-        {"@type": "Question", "name": "Sugarcane Special Drenching ક્યારે અને કેટલી કરવી?",
-         "acceptedAnswer": {"@type": "Answer", "text": "પ્રથમ પિયત પછી / ઘાસ મારવાની દવા પાયાના 3-4 દિવસ પછી, 0.5–0.7 Litres (500–700 ML) પ્રતિ વીઘા. રસાયણિક ખાતરો, fungicide, pesticide સાથે વાપરી શકાય છે."}},
-        {"@type": "Question", "name": "2–4 leaves પર sprayમાં શું આપવું અને કેટલા પંપ કરવા?",
-         "acceptedAnswer": {"@type": "Answer", "text": "પ્રતિ વીઘા 4-5 સ્પ્રે પંપ. દર 15 લિટર પંપમાં 45-50 ML Sugarcane Special + 45-50 ML Immunity Gold."}},
-        {"@type": "Question", "name": "Spray કેટલા દિવસે repeat કરવો?",
-         "acceptedAnswer": {"@type": "Answer", "text": "સામાન્ય રીતે 15–25 દિવસના intervalથી, crop condition પ્રમાણે આગળના 2–3 sprays."}}
+        {
+          "@type": "Question",
+          "name": "Plantation વખતે Granules કેટલા આપવાના?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Current program પ્રમાણે 1 વીઘા દીઠ 8–12 KG (અથવા 1 એકર દીઠ 20–30 KG) Plantation વખતે આપવાના છે."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sugarcane Special Drenching ક્યારે અને કેટલી કરવી?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "પ્રથમ પિયત પછી / ઘાસ મારવાની દવા પાયાના 3-4 દિવસ પછી, 0.5–0.7 Litres (500–700 ML) પ્રતિ વીઘા. રસાયણિક ખાતરો, fungicide, pesticide સાથે વાપરી શકાય છે."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "2–4 leaves પર sprayમાં શું આપવું અને કેટલા પંપ કરવા?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "પ્રતિ વીઘા 4-5 સ્પ્રે પંપ. દર 15 લિટર પંપમાં 45-50 ML Sugarcane Special + 45-50 ML Immunity Gold."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Spray કેટલા દિવસે repeat કરવો?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "સામાન્ય રીતે 15–25 દિવસના intervalથી, crop condition પ્રમાણે આગળના 2–3 sprays."
+          }
+        }
       ]
     }
   ]
-}
-</script>
+}</script>
 
 <style>
 :root{
@@ -332,7 +359,44 @@ details p{padding:0 20px 18px;color:var(--muted);font-size:15.5px}
 @media (max-width:860px){.lead-grid{grid-template-columns:minmax(0,1fr)}}
 .vgrid:not(.open) .vmore{display:none}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@context": "https://schema.org", "@type": "Organization", "@id": "https://ganna.in/#org", "name": "Gujarat Bio Organics Pvt. Ltd.", "url": "https://ganna.in/", "sameAs": ["https://www.gujaratbio.com/", "https://b2b.gujaratbio.com/", "https://www.facebook.com/gujaratbio", "https://www.youtube.com/@Gujaratbio"], "telephone": "+919978791167", "brand": {"@type": "Brand", "name": "Immunity"}, "areaServed": ["Surat", "Navsari", "South Gujarat", "Gujarat"]}, {"@type": "WebSite", "name": "ganna.in શેરડી જ્ઞાન કેન્દ્ર", "url": "https://ganna.in/", "inLanguage": "gu", "publisher": {"@id": "https://ganna.in/#org"}}]}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://ganna.in/#org",
+      "name": "Gujarat Bio Organics Pvt. Ltd.",
+      "url": "https://ganna.in/",
+      "sameAs": [
+        "https://www.gujaratbio.com/",
+        "https://b2b.gujaratbio.com/",
+        "https://www.facebook.com/gujaratbio",
+        "https://www.youtube.com/@Gujaratbio"
+      ],
+      "telephone": "+919978791167",
+      "brand": {
+        "@type": "Brand",
+        "name": "Immunity"
+      },
+      "areaServed": [
+        "Surat",
+        "Navsari",
+        "South Gujarat",
+        "Gujarat"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "name": "ganna.in શેરડી જ્ઞાન કેન્દ્ર",
+      "url": "https://ganna.in/",
+      "inLanguage": "gu",
+      "publisher": {
+        "@id": "https://ganna.in/#org"
+      }
+    }
+  ]
+}</script>
 </head>
 
 <body>
