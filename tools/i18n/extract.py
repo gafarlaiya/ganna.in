@@ -6,6 +6,11 @@ def pages():
     return [p for p in ps if not re.match(r'public/(hi|en|mr|kn|pa)/', p)]
 if __name__ == '__main__':
     os.chdir(ROOT); seen = {}; order = []
+    # Keep existing ids stable (translations are stored by id); new strings get the next free ids.
+    old = json.load(open('tools/i18n/src.json', encoding='utf-8')) if os.path.exists('tools/i18n/src.json') else {}
+    for i in sorted(old, key=int):
+        while len(order) < int(i) - 1: order.append(None)
+        seen[old[i]] = int(i); order.append(old[i])
     def add(t):
         k = norm(t)
         if k not in seen: seen[k] = len(order) + 1; order.append(k)
@@ -15,6 +20,6 @@ if __name__ == '__main__':
             if kind == 'json':
                 for x in json_strings(t): add(x)
             else: add(t)
-    json.dump({str(i + 1): k for i, k in enumerate(order)}, open('tools/i18n/src.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
-    words = sum(len(re.sub(r'<[^>]*>', ' ', k).split()) for k in order)
+    json.dump({str(i + 1): k for i, k in enumerate(order) if k is not None}, open('tools/i18n/src.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
+    words = sum(len(re.sub(r'<[^>]*>', ' ', k).split()) for k in order if k)
     print(len(pages()), 'pages', len(order), 'segments', words, 'words')
