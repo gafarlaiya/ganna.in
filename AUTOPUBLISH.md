@@ -73,3 +73,7 @@ Language: natural Gujarati the way South Gujarat farmers talk, with common Engli
 6. Build succeeds; JSON-LD is valid JSON.
 7. Contact details unchanged.
 8. Words: 700 to 1,500 for English pieces; 500 to 1,000 for Gujarati.
+
+## Gemini mode (from 10 Nov 2026)
+
+Daily publishing now runs as a GitHub Action (`.github/workflows/gemini-autopub.yml`) using `gemini/autopub.py` and the repo secret `GEMINI_API_KEY`, so it uses no Claude allowance. It reads this file as its rulebook, researches with Google Search grounding (only grounded links become Sources), checks banned phrases, phone numbers, length, duplicates and internal links, makes one illustration per piece (captioned "Illustration"), translates, and publishes only if the build is complete. Run it by hand from GitHub → Actions → "Gemini auto-publish" → Run workflow. Claude's role is a light weekly quality review.

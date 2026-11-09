@@ -1,6 +1,6 @@
 # Create a Gujarati blog post from tools/autopub/posts/<slug>.json, using an existing post as the page template.
 # Usage: python3 tools/autopub/new_post.py <slug> [<slug> ...]
-# JSON fields: slug, title (<=60 chars, page title without "| ganna.in"), desc (<=155 chars), h1, crumb (short h1),
+# JSON fields: image (optional, /img/blog/<slug>.webp), image_alt, slug, title (<=60 chars, page title without "| ganna.in"), desc (<=155 chars), h1, crumb (short h1),
 #   tag (card label), card (one-line card text), date ("YYYY-MM-DD"), lead (one paragraph, the direct answer),
 #   body_html (h2/p/ul/li/strong/div.box only; links only to existing ganna.in pages), faq [[q, a], ...] (optional),
 #   related [[url, text], ...] (3-5 existing ganna.in pages), sources [[title, url], ...] (optional)
@@ -35,7 +35,9 @@ def make(slug):
     i = h.index('<section class="hero-b">'); j = h.index('<div class="cta-box">', i); k = h.index('<div class="related">', j); z = h.index("</main>", k)
     hero = (f'<section class="hero-b"><div class="container wide"><p class="crumb"><a href="/">હોમ</a> › <a href="/blog/">બ્લોગ</a> › {e(d["crumb"])}</p>'
             f'<h1>{e(d["h1"])}</h1></div></section><main class="container"><p class="meta">{int(dd)} {MON[int(m)-1]} {y} · ગફાર લાઈયા, Gujarat Bio Organics Pvt. Ltd.</p>'
-            f'<p class="lead">{e(d["lead"])}</p>\n{d["body_html"]}\n')
+            f'<p class="lead">{e(d["lead"])}</p>\n'
+            + (f'<figure class="art-fig"><img src="{e(d["image"])}" alt="{e(d.get("image_alt") or d["h1"])}" width="1200" height="675" loading="eager" style="width:100%;height:auto;border-radius:10px"><figcaption style="font-size:.75rem;color:#7a6f66">ચિત્ર (Illustration)</figcaption></figure>\n' if d.get("image") else "")
+            + f'{d["body_html"]}\n')
     if d.get("faq"):
         hero += "<h2>પ્રશ્નો અને જવાબ</h2>" + "".join(f"<h3>{e(q)}</h3><p>{e(a)}</p>" for q, a in d["faq"])
     if d.get("sources"):

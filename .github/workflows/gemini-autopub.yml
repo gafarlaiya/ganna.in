@@ -1,0 +1,38 @@
+name: Gemini auto-publish
+on:
+  schedule:
+    - cron: "41 20 * * *"   # daily (UTC); see AUTOPUBLISH.md
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Max new pieces this run"
+        default: "10"
+permissions:
+  contents: write
+concurrency:
+  group: autopub
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests pillow beautifulsoup4 lxml
+      - name: Write, check, illustrate, translate and build
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          COUNT: ${{ github.event.inputs.count || '10' }}
+        run: python3 gemini/autopub.py ganna
+      - name: Publish
+        run: |
+          git config user.name "GBO auto-publisher"
+          git config user.email "sales@gujaratbio.com"
+          git add -A
+          git diff --cached --quiet && { echo "Nothing new"; exit 0; }
+          git commit -m "Auto-publish (Gemini) $(date -u +%F)"
+          git pull --rebase --autostash
+          git push
