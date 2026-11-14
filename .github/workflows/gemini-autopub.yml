@@ -1,12 +1,14 @@
 name: Gemini auto-publish
 on:
-  schedule:
-    - cron: "41 20 * * *"   # daily (UTC); see AUTOPUBLISH.md
+  # Daily schedule switched off (Phase 1, Nov 2026): nothing goes live without the owner's approval.
+  # Run by hand: GitHub -> Actions -> "Gemini auto-publish" -> Run workflow. Output lands on a drafts/ branch, never on main.
+  # schedule:
+  #   - cron: "53 21 * * *"
   workflow_dispatch:
     inputs:
       count:
-        description: "Max new pieces this run"
-        default: "10"
+        description: "Max new pieces this run (owner rule: 3 per day)"
+        default: "3"
 permissions:
   contents: write
 concurrency:
@@ -27,14 +29,16 @@ jobs:
       - name: Write, check, illustrate, translate and build
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          COUNT: ${{ github.event.inputs.count || '10' }}
+          COUNT: ${{ github.event.inputs.count || '3' }}
         run: python3 gemini/autopub.py ganna
-      - name: Publish
+      - name: Save as drafts (owner reviews, QA checks, then merges to main to publish)
         run: |
           git config user.name "GBO auto-publisher"
           git config user.email "sales@gujaratbio.com"
+          BR="drafts/autopub-$(date -u +%F-%H%M)"
+          git switch -c "$BR"
           git add -A
           git diff --cached --quiet && { echo "Nothing new"; exit 0; }
-          git commit -m "Auto-publish (Gemini) $(date -u +%F)"
-          git pull --rebase --autostash
-          git push
+          git commit -m "Draft (Gemini) $(date -u +%F): for review, not live"
+          git push -u origin "$BR"
+          echo "Drafts saved on branch $BR. Nothing was published." >> "$GITHUB_STEP_SUMMARY"
