@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(__file__)); from seg import *
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 def pages():
     ps = ['index.html'] + sorted(p for p in glob.glob('public/**/index.html', recursive=True))
-    return [p for p in ps if not re.match(r'public/(hi|en|mr|kn|pa)/', p)]
+    return [p for p in ps if not re.match(r'public/(hi|en|mr|kn|pa|login|account)/', p)]
 if __name__ == '__main__':
     os.chdir(ROOT); seen = {}; order = []
     # Keep existing ids stable (translations are stored by id); new strings get the next free ids.
